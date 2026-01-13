@@ -40,7 +40,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Data fetching functions
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=86400)  # Cache for 24 hours (86400 seconds)
 def load_contact_messages():
     try:
         response = supabase.table("contact_messages").select("*").execute()
@@ -177,4 +177,4 @@ else:
 
 # Footer
 st.markdown("---")
-st.caption("🔄 Data refreshes every 60 seconds | Built with Streamlit & Supabase")
+st.caption("🔄 Data refreshes every 24 hours | Built with Streamlit & Supabase")
